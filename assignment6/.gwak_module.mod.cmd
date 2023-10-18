@@ -1,0 +1,1 @@
+cmd_/home/gyh/Desktop/hihi/cauLinux3-2/assignment6/gwak_module.mod := { echo  /home/gyh/Desktop/hihi/cauLinux3-2/assignment6/gwak_module.o;  echo; } > /home/gyh/Desktop/hihi/cauLinux3-2/assignment6/gwak_module.mod
