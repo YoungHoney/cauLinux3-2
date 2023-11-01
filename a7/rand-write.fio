@@ -1,0 +1,15 @@
+; --start job file --
+[global]
+name=fio-rand-write
+directory=/mnt/gwaktest
+;filename=fio-rand-write
+rw=randwrite
+bs=4K
+direct=0
+numjobs=6
+verify=meta
+
+[fio-test]
+size=4G
+group_reporting
+; -- end job file--

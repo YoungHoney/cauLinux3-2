@@ -33,6 +33,9 @@
 #include "pxt4_jbd3.h"
 #include "xattr.h"
 #include "acl.h"
+#include "calclock.h"
+
+unsigned long long file_write_iter_count, file_write_iter_time;
 
 #ifdef CONFIG_FS_DAX
 static ssize_t pxt4_dax_read_iter(struct kiocb *iocb, struct iov_iter *to)
@@ -216,8 +219,11 @@ out:
 }
 #endif
 
+
+
+
 static ssize_t
-pxt4_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+pxt4_file_write_iter_gwak(struct kiocb *iocb, struct iov_iter *from)
 {
 	struct inode *inode = file_inode(iocb->ki_filp);
 	int o_direct = iocb->ki_flags & IOCB_DIRECT;
@@ -286,6 +292,21 @@ out:
 	inode_unlock(inode);
 	return ret;
 }
+static ssize_t
+pxt4_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+{
+ssize_t result;
+struct timespec myclock[2];
+
+getrawmonotonic(&myclock[0]);
+result=pxt4_file_write_iter_gwak(iocb,from);
+getrawmonotonic(&myclock[1]);
+calclock(myclock,&file_write_iter_time,&file_write_iter_count);
+
+return result;
+
+}
+
 
 #ifdef CONFIG_FS_DAX
 static vm_fault_t pxt4_dax_huge_fault(struct vm_fault *vmf,

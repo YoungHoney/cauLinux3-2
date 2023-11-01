@@ -1032,6 +1032,7 @@ deps_/home/gyh/Desktop/hihi/cauLinux3-2/pxt4/file.o := \
   include/uapi/linux/posix_acl_xattr.h \
   include/linux/posix_acl.h \
   include/uapi/linux/posix_acl.h \
+  /home/gyh/Desktop/hihi/cauLinux3-2/pxt4/calclock.h \
 
 /home/gyh/Desktop/hihi/cauLinux3-2/pxt4/file.o: $(deps_/home/gyh/Desktop/hihi/cauLinux3-2/pxt4/file.o)
 

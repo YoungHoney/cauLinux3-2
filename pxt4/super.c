@@ -58,6 +58,9 @@
 #define CREATE_TRACE_POINTS
 #include <trace/events/pxt4.h>
 
+
+extern unsigned long long file_write_iter_time, file_write_iter_count;
+
 static struct pxt4_lazy_init *pxt4_li_info;
 static struct mutex pxt4_li_mtx;
 static struct ratelimit_state pxt4_mount_msg_ratelimit;
@@ -6348,6 +6351,8 @@ static void __exit pxt4_exit_fs(void)
 	pxt4_exit_post_read_processing();
 	pxt4_exit_es();
 	pxt4_exit_pending();
+
+        printk("20191155 gwak young hun and pxt4_file_write_iter is called %llu times and the time interval is %llu ns\n",file_write_iter_count,file_write_iter_time);
 }
 
 MODULE_AUTHOR("Remy Card, Stephen Tweedie, Andrew Morton, Andreas Dilger, Theodore Ts'o and others");
