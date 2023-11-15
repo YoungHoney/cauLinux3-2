@@ -34,8 +34,13 @@
 #include "xattr.h"
 #include "acl.h"
 #include "calclock.h"
-
+#include <linux/sched.h>
+#include "ds_monitoring.h"
 unsigned long long file_write_iter_count, file_write_iter_time;
+
+//DEFINE_DS_MONITORING(thread_dm, get_thread_idx, get_thread_name, print_zone_dm); 
+DEFINE_DS_MONITORING(thread_dm, get_thread_idx, get_thread_name, print_zone_dm);
+
 
 #ifdef CONFIG_FS_DAX
 static ssize_t pxt4_dax_read_iter(struct kiocb *iocb, struct iov_iter *to)
@@ -297,6 +302,16 @@ pxt4_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
 {
 ssize_t result;
 struct timespec myclock[2];
+struct task_struct *current_task=current;
+unsigned int cpu_id=current_task->cpu;
+//
+//unsigned long cpu_id=get_thread_idx(current);
+//const char *name=get_thread_name(current);
+//find_ds_monitoring(&thread_dm,current);
+
+
+
+printk("20191155 gwak young hun cpu[%u] called pxt4_file_write_iter()",cpu_id);
 
 getrawmonotonic(&myclock[0]);
 result=pxt4_file_write_iter_gwak(iocb,from);

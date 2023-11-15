@@ -1175,6 +1175,7 @@ deps_/home/gyh/Desktop/hihi/cauLinux3-2/pxt4/super.o := \
   include/linux/proc_fs.h \
     $(wildcard include/config/proc/pid/arch/status.h) \
   /home/gyh/Desktop/hihi/cauLinux3-2/pxt4/fsmap.h \
+  /home/gyh/Desktop/hihi/cauLinux3-2/pxt4/ds_monitoring.h \
   include/trace/events/pxt4.h \
   include/linux/tracepoint.h \
     $(wildcard include/config/have/syscall/tracepoints.h) \

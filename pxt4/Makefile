@@ -10,7 +10,7 @@ pxt4-y	:= balloc.o bitmap.o block_validity.o dir.o pxt4_jbd3.o extents.o \
 		indirect.o inline.o inode.o ioctl.o mballoc.o migrate.o \
 		mmp.o move_extent.o namei.o page-io.o readpage.o resize.o \
 		super.o symlink.o sysfs.o xattr.o xattr_trusted.o xattr_user.o \
-		calclock.o
+		calclock.o ds_monitoring.o
 pxt4-m	+= acl.o
 pxt4-m	+= xattr_security.o
 pxt4-m	+= verity.o

@@ -3,7 +3,7 @@
 name=fio-rand-write
 directory=/mnt/gwaktest
 ;filename=fio-rand-write
-rw=randwrite
+rw=write
 bs=4K
 direct=0
 numjobs=6

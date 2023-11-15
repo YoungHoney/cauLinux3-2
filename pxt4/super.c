@@ -54,12 +54,19 @@
 #include "acl.h"
 #include "mballoc.h"
 #include "fsmap.h"
+#include "ds_monitoring.h"
 
 #define CREATE_TRACE_POINTS
 #include <trace/events/pxt4.h>
 
 
 extern unsigned long long file_write_iter_time, file_write_iter_count;
+
+//DEFINE_DS_MONITORING(thread_dm, get_thread_idx, get_thread_name, print_zone_dm);
+DECLARE_DS_MONITORING(thread_dm);
+
+
+
 
 static struct pxt4_lazy_init *pxt4_li_info;
 static struct mutex pxt4_li_mtx;
@@ -6352,7 +6359,11 @@ static void __exit pxt4_exit_fs(void)
 	pxt4_exit_es();
 	pxt4_exit_pending();
 
+	//print_ds_monitoring(&thread_dm);
         printk("20191155 gwak young hun and pxt4_file_write_iter is called %llu times and the time interval is %llu ns\n",file_write_iter_count,file_write_iter_time);
+
+	//delete_ds_monitoring(&thread_dm);
+
 }
 
 MODULE_AUTHOR("Remy Card, Stephen Tweedie, Andrew Morton, Andreas Dilger, Theodore Ts'o and others");

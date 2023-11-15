@@ -96,6 +96,7 @@ __used __section(__versions) = {
 	{ 0x7a7a032c, "jbd3_journal_force_commit" },
 	{ 0x9dc84bc1, "__generic_file_fsync" },
 	{ 0xc1d8cfaf, "__fdget" },
+	{ 0xdf36914b, "xa_find_after" },
 	{ 0xc62cb64, "proc_create_single_data" },
 	{ 0xee2730b2, "from_kuid_munged" },
 	{ 0x59ba1912, "dget_parent" },
@@ -140,6 +141,7 @@ __used __section(__versions) = {
 	{ 0x20000329, "simple_strtoul" },
 	{ 0x9596672c, "touch_atime" },
 	{ 0xc0a3d105, "find_next_bit" },
+	{ 0x5b3e282f, "xa_store" },
 	{ 0xdf566a59, "__x86_indirect_thunk_r9" },
 	{ 0x561501a1, "dput" },
 	{ 0x18574a1, "mb_cache_entry_delete" },
@@ -164,7 +166,9 @@ __used __section(__versions) = {
 	{ 0xcba4abe3, "list_sort" },
 	{ 0x949f7342, "__alloc_percpu" },
 	{ 0xd786a716, "fscrypt_ioctl_add_key" },
+	{ 0x8fa25c24, "xa_find" },
 	{ 0x4fc50396, "file_path" },
+	{ 0xd9491c14, "xa_destroy" },
 	{ 0xd4ce891e, "init_user_ns" },
 	{ 0x53126ecc, "__percpu_counter_sum" },
 	{ 0x26d3b50a, "pagevec_lookup_range" },
@@ -315,6 +319,7 @@ __used __section(__versions) = {
 	{ 0x1ce66144, "dquot_resume" },
 	{ 0x46e877cd, "__fscrypt_prepare_rename" },
 	{ 0x9be43240, "wait_on_page_writeback" },
+	{ 0xa85a3e6d, "xa_load" },
 	{ 0xa681fe88, "generate_random_uuid" },
 	{ 0xc38c83b8, "mod_timer" },
 	{ 0x4e7eee8b, "thaw_bdev" },
@@ -590,6 +595,7 @@ __used __section(__versions) = {
 	{ 0x26bb67b9, "jbd3_journal_blocks_per_page" },
 	{ 0x4b1dfa31, "jbd3_transaction_committed" },
 	{ 0x81af08fb, "inode_init_owner" },
+	{ 0xe914e41e, "strcpy" },
 	{ 0x5a4af29a, "noop_backing_dev_info" },
 	{ 0x997e7cbe, "bh_uptodate_or_lock" },
 	{ 0x115d65b, "percpu_free_rwsem" },
@@ -604,4 +610,4 @@ __used __section(__versions) = {
 MODULE_INFO(depends, "jbd3");
 
 
-MODULE_INFO(srcversion, "A8762AD616F08D58CF6DC3C");
+MODULE_INFO(srcversion, "93DD2E670667080452E77DB");
