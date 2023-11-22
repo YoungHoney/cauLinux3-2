@@ -297,6 +297,8 @@ out:
 	inode_unlock(inode);
 	return ret;
 }
+
+KTDEF(pxt4_file_write_iter);
 static ssize_t
 pxt4_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
 {
@@ -304,19 +306,31 @@ ssize_t result;
 struct timespec myclock[2];
 struct task_struct *current_task=current;
 unsigned int cpu_id=current_task->cpu;
+
+
+//assignment 9 code below
+ktime_t localclock[2];
+
 //
 //unsigned long cpu_id=get_thread_idx(current);
 //const char *name=get_thread_name(current);
-//find_ds_monitoring(&thread_dm,current);
+find_ds_monitoring(&thread_dm,current); //assignment 8 code
 
-
-
-printk("20191155 gwak young hun cpu[%u] called pxt4_file_write_iter()",cpu_id);
-
-getrawmonotonic(&myclock[0]);
+ktget(&localclock[0]);
 result=pxt4_file_write_iter_gwak(iocb,from);
-getrawmonotonic(&myclock[1]);
-calclock(myclock,&file_write_iter_time,&file_write_iter_count);
+ktget(&localclock[1]);
+ktput(localclock,pxt4_file_write_iter);
+
+
+
+
+//printk("20191155 gwak young hun cpu[%u] called pxt4_file_write_iter()",cpu_id);
+
+//below assigment 8 code
+//getrawmonotonic(&myclock[0]);
+//result=pxt4_file_write_iter_gwak(iocb,from);
+//getrawmonotonic(&myclock[1]);
+//calclock(myclock,&file_write_iter_time,&file_write_iter_count);
 
 return result;
 

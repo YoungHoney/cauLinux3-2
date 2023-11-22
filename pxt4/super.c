@@ -55,7 +55,7 @@
 #include "mballoc.h"
 #include "fsmap.h"
 #include "ds_monitoring.h"
-
+#include "calclock.h"
 #define CREATE_TRACE_POINTS
 #include <trace/events/pxt4.h>
 
@@ -6343,7 +6343,7 @@ out7:
 
 	return err;
 }
-
+KTDEC(pxt4_file_write_iter);
 static void __exit pxt4_exit_fs(void)
 {
 	pxt4_destroy_lazyinit_thread();
@@ -6359,10 +6359,11 @@ static void __exit pxt4_exit_fs(void)
 	pxt4_exit_es();
 	pxt4_exit_pending();
 
-	//print_ds_monitoring(&thread_dm);
-        printk("20191155 gwak young hun and pxt4_file_write_iter is called %llu times and the time interval is %llu ns\n",file_write_iter_count,file_write_iter_time);
+	print_ds_monitoring(&thread_dm);
+	ktprint(1,pxt4_file_write_iter);
+        //printk("20191155 gwak young hun and pxt4_file_write_iter is called %llu times and the time interval is %llu ns\n",file_write_iter_count,file_write_iter_time);
 
-	//delete_ds_monitoring(&thread_dm);
+	delete_ds_monitoring(&thread_dm);
 
 }
 
