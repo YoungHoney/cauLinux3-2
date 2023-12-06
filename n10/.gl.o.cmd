@@ -1,0 +1,1 @@
+cmd_/home/gyh/Desktop/hihi/cauLinux3-2/n10/gl.o := ld -m elf_x86_64  -z max-page-size=0x200000 -z noexecstack     -r -o /home/gyh/Desktop/hihi/cauLinux3-2/n10/gl.o /home/gyh/Desktop/hihi/cauLinux3-2/n10/ll.o /home/gyh/Desktop/hihi/cauLinux3-2/n10/nll.o

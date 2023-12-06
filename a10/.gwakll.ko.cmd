@@ -1,0 +1,1 @@
+cmd_/home/gyh/Desktop/hihi/cauLinux3-2/a10/gwakll.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -z noexecstack   --build-id  -T ./scripts/module-common.lds -o /home/gyh/Desktop/hihi/cauLinux3-2/a10/gwakll.ko /home/gyh/Desktop/hihi/cauLinux3-2/a10/gwakll.o /home/gyh/Desktop/hihi/cauLinux3-2/a10/gwakll.mod.o;  true

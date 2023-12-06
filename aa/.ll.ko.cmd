@@ -1,0 +1,1 @@
+cmd_/home/gyh/Desktop/hihi/cauLinux3-2/aa/ll.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -z noexecstack   --build-id  -T ./scripts/module-common.lds -o /home/gyh/Desktop/hihi/cauLinux3-2/aa/ll.ko /home/gyh/Desktop/hihi/cauLinux3-2/aa/ll.o /home/gyh/Desktop/hihi/cauLinux3-2/aa/ll.mod.o;  true
